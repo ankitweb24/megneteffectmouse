@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      div {
+        width: 200px;
+        height: 200px;
+        background-image: url(./img.jpg);
+        background-position: center;
+        background-size: cover;
+        transition: 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+
+    <script>
+      let imgDiv = document.querySelector("div");
+      imgDiv.addEventListener("mousemove", (e) => {
+        let x = e.offsetX;
+        let y = e.offsetY;
+
+        let clientWidth = imgDiv.clientWidth;
+        let clientHeight = imgDiv.clientHeight;
+
+        let transX, transY;
+        transX = x - clientWidth / 2;
+        transY = y - clientHeight / 2;
+
+        imgDiv.style.transform = `translateX(${transX}px) translateY(${transY}px)`;
+
+        imgDiv.style.backgroundPositionX = `${-x / 2}px`;
+        imgDiv.style.backgroundPositionY = `${-y / 2}px`;
+      });
+
+      imgDiv.addEventListener("mousedown", () => {
+        imgDiv.style.transform = ``;
+
+        imgDiv.style.backgroundPositionX = ``;
+        imgDiv.style.backgroundPositionY = ``;
+      });
+    </script>
+  </body>
+</html>
